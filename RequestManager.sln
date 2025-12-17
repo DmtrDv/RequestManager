@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35825.156 d17.13
+VisualStudioVersion = 17.13.35825.156
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RequestManager", "RequestManager\RequestManager.csproj", "{FA60E1A3-B221-4820-A2F0-4CAC2C533BA2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RequestManagerLib", "RequestManager\RequestManagerLib.csproj", "{FA60E1A3-B221-4820-A2F0-4CAC2C533BA2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormsRequestmanager", "WinFormsRequestmanager\WinFormsRequestmanager.csproj", "{1EBDFF7D-7066-4892-81F6-066C5291054B}"
 EndProject

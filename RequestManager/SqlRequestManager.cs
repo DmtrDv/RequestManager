@@ -20,7 +20,7 @@ namespace RequestManager
             {
                 conn = new MySqlConnection(AppSettings.ConnectionString);
                 conn.Open();
-                const string query = "SELECT Id_Request, Сustomer, RequestDate, Condition, Description FROM requests";
+                const string query = "SELECT Id_Request, Сustomer, RequestDate, 'Condition', Description FROM requests";
                 MySqlCommand command = new MySqlCommand(query, conn);
                 using (MySqlDataReader reader = command.ExecuteReader())
                 {

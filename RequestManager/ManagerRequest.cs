@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace RequestManager
 {
-    public class RequestManager
+    public class ManagerRequest
     {
         private IRequestManager storage_;
 
-        RequestManager(IRequestManager storage)
+        public ManagerRequest(IRequestManager storage)
         {
             storage_ = storage;
         }
