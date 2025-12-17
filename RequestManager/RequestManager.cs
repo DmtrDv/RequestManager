@@ -49,7 +49,7 @@ namespace RequestManager
                 return "Введите описание заявки";
             }
 
-            storage_.AddRequest(request);
+            storage_.UpdateRequests(request);
             return "Новая заявка успешно добавлена";
         }
     }
