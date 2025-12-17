@@ -19,5 +19,8 @@ namespace RequestManager
         public string Condition { get; set; }
         [DisplayName("Описание требований")]
         public string Description { get; set; }
+
+        public RequestModel() { }
+        public RequestModel(int id) { Id_Request = id; }
     }
 }
