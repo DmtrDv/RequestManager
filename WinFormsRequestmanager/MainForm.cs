@@ -26,6 +26,10 @@ namespace WinFormsRequestmanager
             {
                 Request_dataGridView.DataSource = sqlRequestManager.GetAllRequests();
                 Request_dataGridView.ClearSelection();
+
+                CountAllRequest_label.Text = "Всего заявок: " + sqlRequestManager.GetAllRequests().Count;
+                CountOpenRequest_label.Text = "Открытые заявки: " + searchAndFilter.FilterCondition(sqlRequestManager.GetAllRequests(), "Открыта").Count;
+                CountCloseRequest_label.Text = "Закрытые заявки: " + +searchAndFilter.FilterCondition(sqlRequestManager.GetAllRequests(), "Закрыта").Count;
             }
             catch (Exception ex)
             {
@@ -87,8 +91,31 @@ namespace WinFormsRequestmanager
 
         private void find_textBox_TextChanged(object sender, EventArgs e)
         {
-            Request_dataGridView.CurrentCell = null;
             Request_dataGridView.DataSource = searchAndFilter.SearchByCustomer(sqlRequestManager.GetAllRequests(), find_textBox.Text);
+        }
+
+        private void filter_button_Click(object sender, EventArgs e)
+        {
+            BindingList<RequestModel> filteredList = sqlRequestManager.GetAllRequests();
+            if (!string.IsNullOrEmpty(filtr_condition_comboBox.Text))
+            {
+                filteredList = searchAndFilter.FilterCondition(filteredList, filtr_condition_comboBox.Text);
+            }
+            if (DateFilter_checkBox.Checked == true)
+            {
+                filteredList = searchAndFilter.FilterDate(filteredList, StartDate_dateTimePicker.Value.Date, EndDate_dateTimePicker.Value.Date);
+            }
+
+            Request_dataGridView.DataSource = filteredList;
+        }
+
+        private void dropFiltring_button_Click(object sender, EventArgs e)
+        {
+            StartDate_dateTimePicker.Value = DateTime.Now;
+            EndDate_dateTimePicker.Value = DateTime.Now;
+            DateFilter_checkBox.Checked = false;
+            filtr_condition_comboBox.SelectedIndex = 0;
+            Request_dataGridView.DataSource = sqlRequestManager.GetAllRequests();
         }
     }
 }

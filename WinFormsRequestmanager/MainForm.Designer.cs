@@ -48,6 +48,7 @@
             this.CountCloseRequest_label = new System.Windows.Forms.Label();
             this.CountOpenRequest_label = new System.Windows.Forms.Label();
             this.CountAllRequest_label = new System.Windows.Forms.Label();
+            this.dropFiltring_button = new System.Windows.Forms.Button();
             this.toolStripe_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Request_dataGridView)).BeginInit();
             this.panel1.SuspendLayout();
@@ -78,6 +79,7 @@
             this.toolStripe_panel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.toolStripe_panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.toolStripe_panel.Controls.Add(this.dropFiltring_button);
             this.toolStripe_panel.Controls.Add(this.DateFilter_checkBox);
             this.toolStripe_panel.Controls.Add(this.panel2);
             this.toolStripe_panel.Controls.Add(this.filter_button);
@@ -93,7 +95,7 @@
             this.toolStripe_panel.Controls.Add(this.Edit_button);
             this.toolStripe_panel.Location = new System.Drawing.Point(0, 0);
             this.toolStripe_panel.Name = "toolStripe_panel";
-            this.toolStripe_panel.Size = new System.Drawing.Size(1023, 50);
+            this.toolStripe_panel.Size = new System.Drawing.Size(1161, 50);
             this.toolStripe_panel.TabIndex = 1;
             // 
             // DateFilter_checkBox
@@ -119,10 +121,11 @@
             // 
             this.filter_button.Location = new System.Drawing.Point(893, 5);
             this.filter_button.Name = "filter_button";
-            this.filter_button.Size = new System.Drawing.Size(120, 38);
+            this.filter_button.Size = new System.Drawing.Size(130, 38);
             this.filter_button.TabIndex = 10;
-            this.filter_button.Text = "Фильтровать";
+            this.filter_button.Text = "♻️ Фильтровать";
             this.filter_button.UseVisualStyleBackColor = true;
+            this.filter_button.Click += new System.EventHandler(this.filter_button_Click);
             // 
             // find_textBox
             // 
@@ -210,11 +213,13 @@
             this.Request_dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.Request_dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Request_dataGridView.Location = new System.Drawing.Point(9, 57);
+            this.Request_dataGridView.MultiSelect = false;
             this.Request_dataGridView.Name = "Request_dataGridView";
+            this.Request_dataGridView.ReadOnly = true;
             this.Request_dataGridView.RowHeadersWidth = 51;
             this.Request_dataGridView.RowTemplate.Height = 24;
             this.Request_dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.Request_dataGridView.Size = new System.Drawing.Size(1005, 450);
+            this.Request_dataGridView.Size = new System.Drawing.Size(1146, 450);
             this.Request_dataGridView.TabIndex = 2;
             // 
             // panel1
@@ -227,7 +232,7 @@
             this.panel1.Controls.Add(this.CountAllRequest_label);
             this.panel1.Location = new System.Drawing.Point(0, 513);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1023, 35);
+            this.panel1.Size = new System.Drawing.Size(1164, 35);
             this.panel1.TabIndex = 3;
             // 
             // CountCloseRequest_label
@@ -257,16 +262,26 @@
             this.CountAllRequest_label.TabIndex = 0;
             this.CountAllRequest_label.Text = "Всего заявок:";
             // 
+            // dropFiltring_button
+            // 
+            this.dropFiltring_button.Location = new System.Drawing.Point(1029, 5);
+            this.dropFiltring_button.Name = "dropFiltring_button";
+            this.dropFiltring_button.Size = new System.Drawing.Size(130, 38);
+            this.dropFiltring_button.TabIndex = 13;
+            this.dropFiltring_button.Text = "❌ Сбросить";
+            this.dropFiltring_button.UseVisualStyleBackColor = true;
+            this.dropFiltring_button.Click += new System.EventHandler(this.dropFiltring_button_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1022, 549);
+            this.ClientSize = new System.Drawing.Size(1163, 549);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.Request_dataGridView);
             this.Controls.Add(this.toolStripe_panel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(1040, 270);
+            this.MinimumSize = new System.Drawing.Size(1181, 270);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Заявки";
@@ -300,6 +315,7 @@
         private System.Windows.Forms.Label CountOpenRequest_label;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.CheckBox DateFilter_checkBox;
+        private System.Windows.Forms.Button dropFiltring_button;
     }
 }
 
