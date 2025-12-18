@@ -98,6 +98,7 @@
     <Compile Include="ManagerRequest.cs" />
     <Compile Include="RequestModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SearchAndFilter.cs" />
     <Compile Include="SqlRequestManager.cs" />
   </ItemGroup>
   <ItemGroup>

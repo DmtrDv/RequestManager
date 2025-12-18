@@ -20,7 +20,7 @@ namespace RequestManager
             {
                 conn = new MySqlConnection(AppSettings.ConnectionString);
                 conn.Open();
-                const string query = "SELECT Id_Request, Сustomer, RequestDate, RequestCondition, Description FROM requests";
+                const string query = "SELECT Id_Request, Customer, RequestDate, RequestCondition, Description FROM requests";
                 MySqlCommand command = new MySqlCommand(query, conn);
                 using (MySqlDataReader reader = command.ExecuteReader())
                 {
@@ -29,7 +29,7 @@ namespace RequestManager
                         int Id = reader.GetInt32("Id_Request");
 
                         RequestModel request = new RequestModel(Id);
-                        request.Customer = reader.GetString("Сustomer");
+                        request.Customer = reader.GetString("Customer");
                         request.RequestDate = reader.GetDateTime("RequestDate");
                         request.Condition = reader.GetString("RequestCondition");
                         request.Description = reader.GetString("Description");
@@ -53,11 +53,11 @@ namespace RequestManager
                 {
                     conn.Open();
                     const string query = @"INSERT INTO requests 
-                                           (Сustomer, RequestDate, RequestCondition, Description )
-                                            VALUES (@Сustomer, @RequestDate, @RequestCondition, @Description )";
+                                           (Customer, RequestDate, RequestCondition, Description )
+                                            VALUES (@Customer, @RequestDate, @RequestCondition, @Description )";
                     using (MySqlCommand command = new MySqlCommand(query, conn))
                     {
-                        command.Parameters.AddWithValue("@Сustomer", request.Customer);
+                        command.Parameters.AddWithValue("@Customer", request.Customer);
                         command.Parameters.AddWithValue("@RequestDate", request.RequestDate);
                         command.Parameters.AddWithValue("@RequestCondition", request.Condition);
                         command.Parameters.AddWithValue("@Description", request.Description);
@@ -87,12 +87,13 @@ namespace RequestManager
                 conn = new MySqlConnection(AppSettings.ConnectionString);
                 conn.Open();
                 const string query = @"UPDATE requests 
-                                       SET Сustomer = @Сustomer, RequestDate = @RequestDate, RequestCondition = @RequestCondition, Description = @Description
+                                       SET Customer = @Customer, RequestDate = @RequestDate, RequestCondition = @RequestCondition, Description = @Description
                                        WHERE Id_Request = @Id_Request";
 
                 using (MySqlCommand command = new MySqlCommand(query, conn))
                 {
-                    command.Parameters.AddWithValue("@Сustomer", request.Customer);
+                    command.Parameters.AddWithValue("@Id_Request", request.Id_Request);
+                    command.Parameters.AddWithValue("@Customer", request.Customer);
                     command.Parameters.AddWithValue("@RequestDate", request.RequestDate);
                     command.Parameters.AddWithValue("@RequestCondition", request.Condition);
                     command.Parameters.AddWithValue("@Description", request.Description);

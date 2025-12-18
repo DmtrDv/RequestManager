@@ -130,6 +130,7 @@
             this.find_textBox.Name = "find_textBox";
             this.find_textBox.Size = new System.Drawing.Size(120, 22);
             this.find_textBox.TabIndex = 3;
+            this.find_textBox.TextChanged += new System.EventHandler(this.find_textBox_TextChanged);
             // 
             // find_label
             // 

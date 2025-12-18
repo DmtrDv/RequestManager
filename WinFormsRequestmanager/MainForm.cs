@@ -14,6 +14,7 @@ namespace WinFormsRequestmanager
     public partial class MainForm: Form
     {
         SqlRequestManager sqlRequestManager = new SqlRequestManager();
+        SearchAndFilter searchAndFilter = new SearchAndFilter();
         public MainForm()
         {
             InitializeComponent();
@@ -82,6 +83,12 @@ namespace WinFormsRequestmanager
                 StartDate_dateTimePicker.Enabled = false;
                 EndDate_dateTimePicker.Enabled = false;
             }       
+        }
+
+        private void find_textBox_TextChanged(object sender, EventArgs e)
+        {
+            Request_dataGridView.CurrentCell = null;
+            Request_dataGridView.DataSource = searchAndFilter.SearchByCustomer(sqlRequestManager.GetAllRequests(), find_textBox.Text);
         }
     }
 }
