@@ -1,5 +1,4 @@
-﻿using RequestManager;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,33 +7,35 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using RequestManager;
 
 namespace WinFormsRequestmanager
 {
-    public partial class AddRequestForm: Form
+    public partial class EditRequestForm: Form
     {
         private ManagerRequest managerRequest_;
-        public AddRequestForm(ManagerRequest managerRequest)
+        private RequestModel requestModel_;
+        public EditRequestForm(ManagerRequest manager, RequestModel request)
         {
             InitializeComponent();
-            managerRequest_ = managerRequest;
-        }
-        private void AddRequestForm_Load(object sender, EventArgs e)
-        {
-            Condition_comboBox.SelectedIndex = 0;
+            managerRequest_ = manager;
+            requestModel_ = request;
+
+            Customer_textBox.Text = requestModel_.Customer;
+            dateRequest_dateTimePicker.Value = requestModel_.RequestDate;
+            Condition_comboBox.Text = requestModel_.Condition;
+            Description_richTextBox.Text = requestModel_.Description;
         }
 
         private void Save_button_Click(object sender, EventArgs e)
         {
-            RequestModel requestModel = new RequestModel()
-            {
-                Customer = Customer_textBox.Text.Trim(),
-                RequestDate = dateRequest_dateTimePicker.Value,
-                Condition = Condition_comboBox.Text,
-                Description = Description_richTextBox.Text
-            };
-            string res = managerRequest_.AddRequest(requestModel);
-            if (res == "Новая заявка успешно добавлена")
+            requestModel_.Customer = Customer_textBox.Text.Trim();
+            requestModel_.RequestDate = dateRequest_dateTimePicker.Value;
+            requestModel_.Condition = Condition_comboBox.Text;
+            requestModel_.Description = Description_richTextBox.Text;
+
+            string res = managerRequest_.UpdateRequests(requestModel_);
+            if (res == "Заявка успешно обновлена")
             {
                 MessageBox.Show(res, "Сообщение",
                                   MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -52,6 +53,5 @@ namespace WinFormsRequestmanager
             DialogResult = DialogResult.Cancel;
             Close();
         }
-
     }
 }

@@ -10,9 +10,9 @@ namespace RequestManager
     public class RequestModel
     {
         [DisplayName("ИД")]
-        public int Id_Request { get; } // id 
+        public int Id_Request { get; set; } // id 
         [DisplayName("Заказчик")]
-        public string Сustomer { get; set; }
+        public string Customer { get; set; }
         [DisplayName("Дата заявки")]
         public DateTime RequestDate { get; set; }
         [DisplayName("Состояние")]
@@ -22,5 +22,17 @@ namespace RequestManager
 
         public RequestModel() { }
         public RequestModel(int id) { Id_Request = id; }
+
+        public RequestModel Clone()
+        {
+            return new RequestModel
+            {
+                Id_Request = this.Id_Request,
+                Customer = this.Customer,
+                RequestDate = this.RequestDate,
+                Condition = this.Condition,
+                Description = this.Description
+            };
+        }
     }
 }

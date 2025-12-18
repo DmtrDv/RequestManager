@@ -52,6 +52,12 @@
     <Compile Include="AddRequestForm.Designer.cs">
       <DependentUpon>AddRequestForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="EditRequestForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditRequestForm.Designer.cs">
+      <DependentUpon>EditRequestForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -62,6 +68,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AddRequestForm.resx">
       <DependentUpon>AddRequestForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditRequestForm.resx">
+      <DependentUpon>EditRequestForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

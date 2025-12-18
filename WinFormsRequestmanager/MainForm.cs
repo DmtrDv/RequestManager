@@ -43,5 +43,45 @@ namespace WinFormsRequestmanager
                 Request_dataGridView.DataSource = sqlRequestManager.GetAllRequests();
             }
         }
+
+        private void Edit_button_Click(object sender, EventArgs e)
+        {
+            if (Request_dataGridView.SelectedRows.Count > 0)
+            {
+                RequestModel selectedRequest = Request_dataGridView.SelectedRows[0].DataBoundItem as RequestModel;
+
+                RequestModel cloneRequest = selectedRequest.Clone();
+                ManagerRequest managerRequest = new ManagerRequest(sqlRequestManager);
+                EditRequestForm editRequestForm = new EditRequestForm(managerRequest, cloneRequest);
+                if (editRequestForm.ShowDialog() == DialogResult.OK)
+                {
+                    selectedRequest.Customer = cloneRequest.Customer;
+                    selectedRequest.RequestDate = cloneRequest.RequestDate;
+                    selectedRequest.Condition = cloneRequest.Condition;
+                    selectedRequest.Description = cloneRequest.Description;
+
+                    Request_dataGridView.Refresh();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Выберите заявку для редактирования", "Внимание",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void DateFilter_checkBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (DateFilter_checkBox.Checked == true)
+            {
+                StartDate_dateTimePicker.Enabled = true;
+                EndDate_dateTimePicker.Enabled = true;
+            }
+            else
+            {
+                StartDate_dateTimePicker.Enabled = false;
+                EndDate_dateTimePicker.Enabled = false;
+            }       
+        }
     }
 }

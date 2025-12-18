@@ -150,6 +150,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "AddRequestForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Новая заявка";
             this.Load += new System.EventHandler(this.AddRequestForm_Load);
             this.ResumeLayout(false);
