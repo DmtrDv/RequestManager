@@ -26,7 +26,6 @@ namespace WinFormsRequestmanager
             Condition_comboBox.Text = requestModel_.Condition;
             Description_richTextBox.Text = requestModel_.Description;
         }
-
         private void Save_button_Click(object sender, EventArgs e)
         {
             requestModel_.Customer = Customer_textBox.Text.Trim();

@@ -14,7 +14,6 @@ namespace RequestManager
         {
             storage_ = storage;
         }
-
         public string AddRequest(RequestModel request)
         {
             if (string.IsNullOrEmpty(request.Customer))
@@ -33,7 +32,6 @@ namespace RequestManager
             storage_.AddRequest(request);
             return "Новая заявка успешно добавлена";
         }
-
         public string UpdateRequests(RequestModel request)
         {
             if (string.IsNullOrEmpty(request.Customer))

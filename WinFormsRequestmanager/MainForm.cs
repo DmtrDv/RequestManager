@@ -19,7 +19,6 @@ namespace WinFormsRequestmanager
         {
             InitializeComponent();
         }
-
         private void MainForm_Load(object sender, EventArgs e)
         {
             try
@@ -35,10 +34,8 @@ namespace WinFormsRequestmanager
             {
                 MessageBox.Show($"Ошибка при загрузке данных: {ex.Message}", "Ошибка",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            
+            } 
         }
-
         private void Add_button_Click(object sender, EventArgs e)
         {
             ManagerRequest managerRequest = new ManagerRequest(sqlRequestManager);
@@ -48,7 +45,6 @@ namespace WinFormsRequestmanager
                 Request_dataGridView.DataSource = sqlRequestManager.GetAllRequests();
             }
         }
-
         private void Edit_button_Click(object sender, EventArgs e)
         {
             if (Request_dataGridView.SelectedRows.Count > 0)
@@ -74,7 +70,6 @@ namespace WinFormsRequestmanager
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-
         private void DateFilter_checkBox_CheckedChanged(object sender, EventArgs e)
         {
             if (DateFilter_checkBox.Checked == true)
@@ -88,12 +83,10 @@ namespace WinFormsRequestmanager
                 EndDate_dateTimePicker.Enabled = false;
             }       
         }
-
         private void find_textBox_TextChanged(object sender, EventArgs e)
         {
             Request_dataGridView.DataSource = searchAndFilter.SearchByCustomer(sqlRequestManager.GetAllRequests(), find_textBox.Text);
         }
-
         private void filter_button_Click(object sender, EventArgs e)
         {
             BindingList<RequestModel> filteredList = sqlRequestManager.GetAllRequests();
@@ -108,7 +101,6 @@ namespace WinFormsRequestmanager
 
             Request_dataGridView.DataSource = filteredList;
         }
-
         private void dropFiltring_button_Click(object sender, EventArgs e)
         {
             StartDate_dateTimePicker.Value = DateTime.Now;

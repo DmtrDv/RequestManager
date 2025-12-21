@@ -17,7 +17,6 @@ namespace RequestManager
         public static string Password { get; set; }
         public static string Port { get; set; }
         public static string Charset { get; set; }
-
         public static string ConnectionString
         {
             get
@@ -25,7 +24,6 @@ namespace RequestManager
                 return $"Server={Server};Port={Port};Database={Database};Uid={UserId};Pwd={Password};Charset={Charset}";
             }
         }
-
         static AppSettings()
         {
             LoadSettings();
@@ -48,7 +46,6 @@ namespace RequestManager
 
         public static (bool isValid, string errorMessage) AreSettingsValidWithDetails()
         {
-            // Проверка заполненности полей
             if (string.IsNullOrWhiteSpace(Server))
                 return (false, "Server не указан");
             if (string.IsNullOrWhiteSpace(Database))
@@ -57,8 +54,6 @@ namespace RequestManager
                 return (false, "UserId не указан");
             if (string.IsNullOrWhiteSpace(Port))
                 return (false, "Port не указан");
-
-            // Проверка подключения к БД
             try
             {
                 using (var connection = new MySql.Data.MySqlClient.MySqlConnection(ConnectionString))

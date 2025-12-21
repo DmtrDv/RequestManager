@@ -87,7 +87,8 @@ namespace RequestManager
                 conn = new MySqlConnection(AppSettings.ConnectionString);
                 conn.Open();
                 const string query = @"UPDATE requests 
-                                       SET Customer = @Customer, RequestDate = @RequestDate, RequestCondition = @RequestCondition, Description = @Description
+                                       SET Customer = @Customer, RequestDate = @RequestDate, 
+                                           RequestCondition = @RequestCondition, Description = @Description
                                        WHERE Id_Request = @Id_Request";
 
                 using (MySqlCommand command = new MySqlCommand(query, conn))

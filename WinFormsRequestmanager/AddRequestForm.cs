@@ -23,7 +23,6 @@ namespace WinFormsRequestmanager
         {
             Condition_comboBox.SelectedIndex = 0;
         }
-
         private void Save_button_Click(object sender, EventArgs e)
         {
             RequestModel requestModel = new RequestModel()
@@ -46,12 +45,10 @@ namespace WinFormsRequestmanager
                 MessageBox.Show(res, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void Cancel_button_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;
             Close();
         }
-
     }
 }
