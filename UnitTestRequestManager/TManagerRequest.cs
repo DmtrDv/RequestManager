@@ -18,7 +18,7 @@ namespace UnitTestRequestManager
             {
                 Customer = "Заказчик_1",
                 Condition = "Открыта",
-                Description = "Тестовое описание",
+                Description = "Тестовое описание"
             };
             List<RequestModel> repositoryContent = new List<RequestModel>();
 
